@@ -48,7 +48,7 @@ const displayNews = (news, name='Breaking News') => {
     else {
         noDataFoundField.classList.add('d-none')
     }
-    document.getElementById('found-item').innerText = `${news.length} items found for this category ${name}`
+    document.getElementById('found-item').innerText = `${news.length} items found for category ${name}`
     const newsContainer = document.getElementById('news-container');
     newsContainer.textContent = '';
     news.forEach(news => {
