@@ -16,14 +16,14 @@ const displayNewsCategories = newsCategories => {
     newsCategories.forEach(category => {
         const li = document.createElement('li');
         li.classList.add('nav-item', 'cursor');
-        li.setAttribute('onclick', `loadNews(${category.category_id})`);
+        li.setAttribute('onclick', `loadNews(${category.category_id}, '${category.category_name}')`);
         li.innerText = `${category.category_name}`
         categoryContainer.appendChild(li);
     })
 }
 
 // Function for calling api using category id dynamically
-const loadNews = async categoryId => {
+const loadNews = async (categoryId, categoryName) => {
     // Start loader
     toggleSpinner(true);
     try {
@@ -31,7 +31,7 @@ const loadNews = async categoryId => {
       const data = await res.json();
       const arrayOfObject = data.data;
       arrayOfObject.sort((a, b) => b.total_view - a.total_view);
-      displayNews(arrayOfObject);
+      displayNews(arrayOfObject, categoryName);
     }
     catch(error) {
       console.log(error);
@@ -40,7 +40,7 @@ const loadNews = async categoryId => {
 }
 
 // Function for display all news of a category on a section dynamically
-const displayNews = news => {
+const displayNews = (news, name='Breaking News') => {
     const noDataFoundField = document.getElementById('no-data-found-field');
     if(news.length === 0) {
         noDataFoundField.classList.remove('d-none')
@@ -48,7 +48,7 @@ const displayNews = news => {
     else {
         noDataFoundField.classList.add('d-none')
     }
-    document.getElementById('found-item').innerText = `${news.length} items found for this category`
+    document.getElementById('found-item').innerText = `${news.length} items found for this category ${name}`
     const newsContainer = document.getElementById('news-container');
     newsContainer.textContent = '';
     news.forEach(news => {
@@ -63,7 +63,7 @@ const displayNews = news => {
                 <div class="col-md-9">
                   <div class="card-body ps-md-5">
                     <h4 class="card-title fw-bold">${news.title}</h4>
-                    <p class="card-text text-muted">${news.details.slice(0, 700)}...</p>
+                    <p class="card-text text-muted">${news.details.slice(0, 500) + '...'}</p>
                     <div
                       class="d-flex flex-column flex-md-row gap-2 justify-content-between align-items-center"
                     >
