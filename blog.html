@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Epoch News</title>
+    <!-- Font Awesome Kit -->
+    <script
+      src="https://kit.fontawesome.com/a3ff13692d.js"
+      crossorigin="anonymous"
+    ></script>
+    <!-- Bootstrap CDN -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
+    />
+    <!-- Vanila CSS -->
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body class="bg-light">
+    <!-- Header section -->
+    <header class="container">
+      <nav class="navbar navbar-expand-lg pt-4">
+        <a class="navbar-brand text-primary" href="index.html">Epoch News</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="index.html">News</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="blog.html">Blog</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+      <!-- Divider -->
+      <hr />
+    </header>
+    <main class="container">
+      <section class="py-5">
+        <div class="row g-4">
+          <div class="col-sm-6">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">
+                  What is the difference between var, let, const?
+                </h5>
+                <p class="card-text">
+                  The scope of a var variable is functional scope. It can be
+                  updated and re-declared into the scope. The scope of a let
+                  variable is block scope. It can be updated but cannot be
+                  re-declared into the scope. And the scope of a const variable
+                  is block scope. It cannot be updated or re-declared into the
+                  scope.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">
+                  What is the difference between regular and arrow function?
+                </h5>
+                <p class="card-text">
+                  Regular functions created using function declarations or
+                  expressions are constructible and callable. Since regular
+                  functions are constructible, they can be called using the new
+                  keyword. However, the arrow functions are only callable and
+                  not constructible, arrow functions can never be used as
+                  constructor functions.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">
+                  What is the difference between map, filter, find, forEach?
+                </h5>
+                <p class="card-text">
+                  map() goes through all entries then creates a new array using
+                  the function supplied. filter() checks every element in an
+                  array to see if it meets a certain criteria and returns a new
+                  array with the elements that return truthy for the criteria.
+                  find() locates a specific entry by a predicate and returns it.
+                  forEach(), is used to execute the same code on every element
+                  in an array but does not change the array and it returns
+                  undefined.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Why should we use template string?</h5>
+                <p class="card-text">
+                  Template strings are a powerful feature of modern JavaScript
+                  released in ES6. It lets us insert/interpolate variables and
+                  expressions into strings without needing to concatenate like
+                  in older versions of JavaScript. It allows us to create
+                  strings that are complex and contain dynamic elements.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="bg-white py-4 text-center">
+      <p class="m-0">Copyright 2022 Epoch News</p>
+    </footer>
+    <!-- Script -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/app.js"></script>
+  </body>
+</html>
