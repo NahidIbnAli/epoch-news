@@ -41,7 +41,7 @@
               <a class="nav-link" aria-current="page" href="index.html">News</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="blog.html">Blog</a>
+              <a class="nav-link active" href="blog.html">Blog</a>
             </li>
           </ul>
         </div>
@@ -50,74 +50,86 @@
       <hr />
     </header>
     <main class="container">
-      <section class="py-5">
-        <div class="row g-4">
-          <div class="col-sm-6">
+      <section class="pb-5">
+        <div class="row mt-5" id="accordion">
+          <div class="col-md-6">
             <div class="card">
-              <div class="card-body">
-                <h5 class="card-title">
-                  What is the difference between var, let, const?
+              <div class="card-header">
+                <h5 class="my-1">
+                  <a
+                    href="#accordion1"
+                    class="text-decoration-none text-dark"
+                    data-bs-toggle="collapse"
+                    >What is the difference between var, let, const?</a
+                  >
                 </h5>
-                <p class="card-text">
-                  The scope of a var variable is functional scope. It can be
-                  updated and re-declared into the scope. The scope of a let
-                  variable is block scope. It can be updated but cannot be
-                  re-declared into the scope. And the scope of a const variable
-                  is block scope. It cannot be updated or re-declared into the
-                  scope.
-                </p>
+              </div>
+              <div class="collapse" id="accordion1" data-bs-parent="#accordion">
+                <div class="card-body">
+                  <p class="m-0">
+                    The scope of a var variable is functional scope. It can be updated and re-declared into the scope. The scope of a let variable is block scope. It can be updated but cannot be re-declared into the scope. And the scope of a const variable is block scope. It cannot be updated or re-declared into the scope.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="card my-3">
+              <div class="card-header">
+                <h5 class="my-1">
+                  <a
+                    href="#accordion2"
+                    class="text-decoration-none text-dark"
+                    data-bs-toggle="collapse"
+                    >What is the difference between map, filter, find, forEach?</a
+                  >
+                </h5>
+              </div>
+              <div class="collapse" id="accordion2" data-bs-parent="#accordion">
+                <div class="card-body">
+                  <p class="m-0">
+                    map() goes through all entries then creates a new array using the function supplied. filter() checks every element in an array to see if it meets a certain criteria and returns a new array with the elements that return truthy for the criteria. find() locates a specific entry by a predicate and returns it. forEach(), is used to execute the same code on every element in an array but does not change the array and it returns undefined.
+                  </p>
+                </div>
               </div>
             </div>
           </div>
-          <div class="col-sm-6">
+          <div class="col-md-6">
             <div class="card">
-              <div class="card-body">
-                <h5 class="card-title">
-                  What is the difference between regular and arrow function?
+              <div class="card-header">
+                <h5 class="my-1">
+                  <a
+                    href="#accordion3"
+                    class="text-decoration-none text-dark"
+                    data-bs-toggle="collapse"
+                    >What is the difference between regular and arrow function?</a
+                  >
                 </h5>
-                <p class="card-text">
-                  Regular functions created using function declarations or
-                  expressions are constructible and callable. Since regular
-                  functions are constructible, they can be called using the new
-                  keyword. However, the arrow functions are only callable and
-                  not constructible, arrow functions can never be used as
-                  constructor functions.
-                </p>
+              </div>
+              <div class="collapse" id="accordion3" data-bs-parent="#accordion">
+                <div class="card-body">
+                  <p class="m-0">
+                    Regular functions created using function declarations or expressions are constructible and callable. Since regular functions are constructible, they can be called using the new keyword. However, the arrow functions are only callable and not constructible, arrow functions can never be used as constructor functions.
+                  </p>
+                </div>
               </div>
             </div>
-          </div>
-          <div class="col-sm-6">
-            <div class="card">
-              <div class="card-body">
-                <h5 class="card-title">
-                  What is the difference between map, filter, find, forEach?
+            <div class="card my-3">
+              <div class="card-header">
+                <h5 class="my-1">
+                  <a
+                    href="#accordion4"
+                    class="text-decoration-none text-dark"
+                    data-bs-toggle="collapse"
+                    >Why should we use template string?</a
+                  >
                 </h5>
-                <p class="card-text">
-                  map() goes through all entries then creates a new array using
-                  the function supplied. filter() checks every element in an
-                  array to see if it meets a certain criteria and returns a new
-                  array with the elements that return truthy for the criteria.
-                  find() locates a specific entry by a predicate and returns it.
-                  forEach(), is used to execute the same code on every element
-                  in an array but does not change the array and it returns
-                  undefined.
-                </p>
               </div>
-            </div>
-          </div>
-          <div class="col-sm-6">
-            <div class="card">
-              <div class="card-body">
-                <h5 class="card-title">Why should we use template string?</h5>
-                <p class="card-text">
-                  Template strings are a powerful feature of modern JavaScript
-                  released in ES6. It lets us insert/interpolate variables and
-                  expressions into strings without needing to concatenate like
-                  in older versions of JavaScript. It allows us to create
-                  strings that are complex and contain dynamic elements.
-                </p>
+              <div class="collapse" id="accordion4" data-bs-parent="#accordion">
+                <div class="card-body">
+                  <p class="m-0">
+                    Template strings are a powerful feature of modern JavaScript released in ES6. It lets us insert/interpolate variables and expressions into strings without needing to concatenate like in older versions of JavaScript. It allows us to create strings that are complex and contain dynamic elements.
+                  </p>
+                </div>
               </div>
-            </div>
           </div>
         </div>
       </section>

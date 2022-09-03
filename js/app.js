@@ -24,6 +24,8 @@ const loadNews = categoryId => {
 }
 
 const displayAllNewsInACategory = allNews => {
+    // Start loader
+    toggleSpinner(true);
     // console.log(allNews)
     const noDataFoundField = document.getElementById('no-data-found-field');
     if(allNews.length === 0) {
@@ -89,6 +91,18 @@ const displayAllNewsInACategory = allNews => {
         `
         newsContainer.appendChild(div);
     })
+    // Stop loader
+    toggleSpinner(false);
+}
+
+const toggleSpinner = isLoading => {
+  const loaderSection = document.getElementById('loader-section');
+  if(isLoading) {
+      loaderSection.classList.remove('d-none');
+  }
+  else {
+      loaderSection.classList.add('d-none');
+  }
 }
 
 loadData();
