@@ -1,3 +1,6 @@
 .form-select {
   width: auto;
 }
+.cursor {
+  cursor: pointer;
+}
