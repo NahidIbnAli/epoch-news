@@ -61,9 +61,9 @@ const displayNews = (news, name='Breaking News') => {
                   <img src="${news.thumbnail_url}" class="img-fluid w-100 rounded-start" alt="..." />
                 </div>
                 <div class="col-md-9">
-                  <div class="card-body ps-md-5">
+                  <div class="card-body ps-0 ps-md-5">
                     <h4 class="card-title fw-bold">${news.title}</h4>
-                    <p class="card-text text-muted">${news.details.slice(0, 500) + '...'}</p>
+                    <p class="card-text text-muted">${news.details.slice(0, 400) + '...'}</p>
                     <div
                       class="d-flex flex-column flex-md-row gap-2 justify-content-between align-items-center"
                     >
