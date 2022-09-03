@@ -2,6 +2,7 @@ const loadData = () => {
     fetch('https://openapi.programming-hero.com/api/news/categories')
     .then(res => res.json())
     .then(data => displayNewsCategories(data.data.news_category))
+    .catch(error => console.log(error));
 }
 
 const displayNewsCategories = (newsCategories) => {
@@ -19,13 +20,23 @@ const loadNews = categoryId => {
     fetch(`https://openapi.programming-hero.com/api/news/category/0${categoryId}`)
     .then(res => res.json())
     .then(data => displayAllNewsInACategory(data.data))
+    .catch(error => console.log(error));
 }
 
 const displayAllNewsInACategory = allNews => {
+    // console.log(allNews)
+    const noDataFoundField = document.getElementById('no-data-found-field');
+    if(allNews.length === 0) {
+        noDataFoundField.classList.remove('d-none')
+    }
+    else {
+        noDataFoundField.classList.add('d-none')
+    }
+    document.getElementById('found-item').innerText = `${allNews.length} items found for category `
     const newsContainer = document.getElementById('news-container');
     newsContainer.textContent = '';
     allNews.forEach(news => {
-        console.log(news)
+        // console.log(news)
         const div = document.createElement('div');
         div.classList.add('col-12');
         div.innerHTML = `
@@ -46,8 +57,8 @@ const displayAllNewsInACategory = allNews => {
                           <img src="${news.author.img}" width="50px" class="rounded-circle" alt="" />
                         </div>
                         <div>
-                          <p class="m-0 fw-semibold">${news.author.name}</p>
-                          <small class="text-muted">${news.author.published_date}</small>
+                          <p class="m-0 fw-semibold">${news.author.name ? news.author.name : 'No data found'}</p>
+                          <small class="text-muted">${news.author.published_date ? news.author.published_date : 'No data found'}</small>
                         </div>
                       </div>
                       <div>

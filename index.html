@@ -59,11 +59,9 @@
           class="navbar-nav flex-md-row justify-content-between"
         ></ul>
       </section>
-      <!-- Categories counter section -->
+      <!-- Found item section -->
       <section class="mt-4">
-        <p class="p-3 bg-white rounded fw-semibold">
-          4 items found for category Entertainment
-        </p>
+        <p class="p-3 bg-white rounded fw-semibold" id="found-item"></p>
       </section>
       <!-- Sort by view -->
       <section class="py-4">
@@ -90,6 +88,7 @@
       </section>
       <!-- News section -->
       <section class="py-5">
+        <h1 id="no-data-found-field" class="d-none">No data found</h1>
         <div id="news-container" class="row gap-4"></div>
       </section>
     </main>
