@@ -10,13 +10,15 @@ const displayNewsCategories = (newsCategories) => {
     newsCategories.forEach(category => {
         const li = document.createElement('li');
         li.classList.add('nav-item', 'cursor');
-        li.setAttribute('onclick', `loadNews(${category.category_id})`)
+        li.setAttribute('onclick', `loadNews(${category.category_id})`);
         li.innerText = `${category.category_name}`
         categoryContainer.appendChild(li);
     })
 }
 
 const loadNews = categoryId => {
+    // Start loader
+    toggleSpinner(true);
     fetch(`https://openapi.programming-hero.com/api/news/category/0${categoryId}`)
     .then(res => res.json())
     .then(data => displayAllNewsInACategory(data.data))
@@ -24,9 +26,6 @@ const loadNews = categoryId => {
 }
 
 const displayAllNewsInACategory = allNews => {
-    // Start loader
-    toggleSpinner(true);
-    // console.log(allNews)
     const noDataFoundField = document.getElementById('no-data-found-field');
     if(allNews.length === 0) {
         noDataFoundField.classList.remove('d-none')
@@ -34,11 +33,10 @@ const displayAllNewsInACategory = allNews => {
     else {
         noDataFoundField.classList.add('d-none')
     }
-    document.getElementById('found-item').innerText = `${allNews.length} items found for category `
+    document.getElementById('found-item').innerText = `${allNews.length} items found for this category`
     const newsContainer = document.getElementById('news-container');
     newsContainer.textContent = '';
     allNews.forEach(news => {
-        // console.log(news)
         const div = document.createElement('div');
         div.classList.add('col-12');
         div.innerHTML = `
@@ -66,22 +64,14 @@ const displayAllNewsInACategory = allNews => {
                       <div>
                         <p class="d-flex align-items-center gap-2 m-0">
                           <i class="fa-regular fa-eye"></i>
-                          <span class="fw-semibold">${news.total_view}</span>
+                          <span class="fw-semibold">${news.total_view ? news.total_view : 'No data found'}</span>
                         </p>
                       </div>
                       <div>
-                        <p class="d-flex gap-2 m-0">
-                          <i class="fa-solid fa-star-half-stroke"></i>
-                          <i class="fa-regular fa-star"></i>
-                          <i class="fa-regular fa-star"></i>
-                          <i class="fa-regular fa-star"></i>
-                          <i class="fa-regular fa-star"></i>
-                        </p>
-                      </div>
-                      <div>
-                        <p class="text-primary cursor m-0">
+                        <button onclick="loadDetail('${news._id}')" data-bs-toggle="modal"
+                        data-bs-target="#modal" class="btn text-primary border-0">
                           <i class="fa-solid fa-arrow-right"></i>
-                        </p>
+                        </button>
                       </div>
                     </div>
                   </div>
@@ -93,6 +83,42 @@ const displayAllNewsInACategory = allNews => {
     })
     // Stop loader
     toggleSpinner(false);
+}
+
+const loadDetail = async newsId => {
+    const res = await fetch(`https://openapi.programming-hero.com/api/news/${newsId}`);
+    const data = await res.json();
+    displayNewsDetail(data.data[0])
+}
+
+const displayNewsDetail = details => {
+    console.log(details);
+    const modalContainer = document.getElementById('modal-container');
+    modalContainer.textContent = '';
+    const div = document.createElement('div');
+    div.innerHTML = `
+    <img src="${details.image_url}" class="img-fluid w-100 rounded-start" alt="..." />
+    <h4 class="my-2">${details.title}</h4>
+    <div class="d-flex align-items-center gap-3 my-3">
+          <div>
+            <img src="${details.author.img}" width="50px" class="rounded-circle" alt="" />
+          </div>
+          <div>
+            <p class="m-0 fw-semibold">${details.author.name ? details.author.name : 'No data found'}</p>
+            <small class="text-muted">${details.author.published_date ? details.author.published_date : 'No data found'}</small>
+          </div>
+    </div>
+    <div class="my-4">
+        <p>${details.details}</p>
+    </div>
+    <div>
+        <p class="text-center">
+            <i class="fa-regular fa-eye"></i>
+            <span class="fw-semibold">${details.total_view ? details.total_view : 'No data found'}</span>
+        </p>
+    </div>
+    `
+    modalContainer.appendChild(div);
 }
 
 const toggleSpinner = isLoading => {
